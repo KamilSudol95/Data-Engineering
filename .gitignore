@@ -1,3 +1,5 @@
 airflow.env
 docker-compose.yaml
 logs/
+data/
+config/
