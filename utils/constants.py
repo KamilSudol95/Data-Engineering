@@ -2,7 +2,7 @@ import os
 import configparser
 
 parser = configparser.ConfigParser()
-parser.read('/root/airflow/projects/reddit_etl_project/config/config.conf')
+parser.read(os.path.join(os.path.dirname(__file__),  '../config/config.conf'))
 
 
 SECRET = parser.get('api_keys', 'reddit_secret_key')
