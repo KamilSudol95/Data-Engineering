@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 
-sys.path.insert(0, '/root/airflow/projects/reddit_etl_project')
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from pipelines.reddit_pipeline import reddit_pipeline
 
@@ -14,7 +14,7 @@ from pipelines.reddit_pipeline import reddit_pipeline
 
 default_args = {
     'owner': 'Kamil Sudol',
-    'start_date': datetime(2025, 7, 27),
+    'start_date': datetime(2025, 7, 31),
 }
 
 file_postfix = datetime.now().strftime("%Y%m%d")
@@ -39,3 +39,4 @@ extract = PythonOperator(
     },
     dag=dag,
 )
+extract

@@ -1,7 +1,9 @@
 import praw
 import sys
 
-def connect_reddit(client_id, client_secret, user_agent):
+from utils.constants import POST_FIELDS
+
+def connect_reddit(client_id, client_secret, user_agent, username, password):
     """
     Connects to Reddit using PRAW (Python Reddit API Wrapper).
     
@@ -14,7 +16,9 @@ def connect_reddit(client_id, client_secret, user_agent):
     try:
         reddit = praw.Reddit(client_id=client_id,
                              client_secret=client_secret,
-                             user_agent=user_agent)
+                             user_agent=user_agent,
+                             username=username,
+                             password=password)
         print("Connected to Reddit successfully.")
         return reddit
     
@@ -30,4 +34,9 @@ def extract_posts(reddit_instance, subreddit: str, time_filter: str, limit=None)
 
     post_list = []
 
-    print(posts)
+    for post in posts:
+        post_dict = vars(post)
+        post = {key : post_dict[key] for key in POST_FIELDS}
+        post_list.append(post)
+    
+    return post_list
