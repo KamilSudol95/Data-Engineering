@@ -22,7 +22,7 @@ def connect_reddit(client_id, client_secret, user_agent):
         print(f"Failed to connect to Reddit: {e}")
         sys.exit(1)
 
-def extract_posts(reddit_instance, subreddit: str, time_filter: str, limit: int):
+def extract_posts(reddit_instance, subreddit: str, time_filter: str, limit=None):
 
     subreddit = reddit_instance.subreddit(subreddit)
     posts = subreddit.top(time_filter=time_filter, limit=limit)
