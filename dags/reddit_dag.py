@@ -8,6 +8,7 @@ from airflow.operators.python import PythonOperator
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from pipelines.reddit_pipeline import reddit_pipeline
+from pipelines.aws_s3_pipeline import upload_to_s3_pipeline
 
 
 
@@ -39,4 +40,10 @@ extract = PythonOperator(
     },
     dag=dag,
 )
-extract
+#Upload to AWS S3
+upload_to_s3 = PythonOperator(
+    task_id='upload_to_s3_pipeline',
+    python_callable=upload_to_s3_pipeline,
+    dag=dag,
+)
+extract >> upload_to_s3
