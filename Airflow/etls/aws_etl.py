@@ -1,7 +1,8 @@
 import sys
 import s3fs
 
-from utils.constants import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
+from Airflow.utils.constants import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+
 
 def connect_to_s3():
 

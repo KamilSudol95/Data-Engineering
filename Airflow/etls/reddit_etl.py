@@ -3,7 +3,7 @@ import sys
 import pandas as pd
 import numpy as np
 
-from utils.constants import POST_FIELDS
+from Airflow.utils.constants import POST_FIELDS
 
 def connect_reddit(client_id, client_secret, user_agent):
     """

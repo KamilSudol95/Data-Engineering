@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from etls.reddit_etl import connect_reddit, extract_posts, transform_data, load_to_csv
-from utils.constants import CLIENT_ID, SECRET, REDDIT_USER_AGENT, OUTPUT_PATH
+from Airflow.etls.reddit_etl import connect_reddit, extract_posts, transform_data, load_to_csv
+from Airflow.utils.constants import CLIENT_ID, SECRET, REDDIT_USER_AGENT, OUTPUT_PATH
 
 
 
